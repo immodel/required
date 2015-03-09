@@ -4,11 +4,11 @@ module.exports = function() {
       ? this.validator(this._requiredValidator, 'required')
       : this.removeValidator(this._requiredValidator, 'required');
   };
-  
-  this._requiredValidator = this._requiredValidator || function(value) {
-    return !! value;
+
+  this._requiredValidator = this._requiredValidator || function() {
+    return !! this.value;
   };
-  
+
   this.requiredValidator = function(fn) {
     return this.use(function() {
       this._requiredValidator = fn;
